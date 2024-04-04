@@ -22,11 +22,21 @@
       let now = new Date().getTime();
       let distance = targetDate - now;
 
-      // Calculate days, hours, minutes, and seconds
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const weekends = Math.floor(days / 7) * 2; // Number of weekend days
-      const remainingWeekdays = days - weekends;
+      // Initialize variables to count weekdays and weekend days
+      let remainingWeekdays = 0;
+      let remainingWeekends = 0;
 
+      // Loop through each day between current date and target date
+      for (let date = new Date(currentDate); date <= targetDate; date.setDate(date.getDate() + 1)) {
+        // Check if the current day is a weekend (Saturday or Sunday)
+        if (date.getDay() === 0 || date.getDay() === 6) {
+          remainingWeekends++;
+        } else {
+          remainingWeekdays++;
+        }
+      }
+
+      let days = remainingWeekends + remainingWeekdays;
       
       let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -34,7 +44,7 @@
 
       // Display the countdown
       let countdownElement = document.getElementById('countdown');
-      countdownElement.textContent = `Time remains until 2024-04-16: ${days} days (${remainingWeekdays} bussines days), ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+      countdownElement.textContent = `Time remains until 2024-04-16: ${days} days (${remainingWeekdays} bussines days and ${remainingWeekends} weekend days), ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
     }
 
     // Update the countdown every second
