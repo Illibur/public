@@ -27,7 +27,8 @@
       let remainingWeekends = 0;
 
       // Loop through each day between current date and target date
-      for (let date = new Date(currentDate); date < targetDate; date.setDate(date.getDate() + 1)) {
+      let date = new Date();
+      for (date.setDate(date.getDate() + 1); date < targetDate; date.setDate(date.getDate() + 1)) {
         // Check if the current day is a weekend (Saturday or Sunday)
         if (date.getDay() === 0 || date.getDay() === 6) {
           remainingWeekends++;
@@ -44,7 +45,7 @@
 
       // Display the countdown
       let countdownElement = document.getElementById('countdown');
-      countdownElement.textContent = `Până pe 16 aprilie au rămas: ${days} zile (${remainingWeekdays} zile lucrătoare și ${remainingWeekends} weekenduri), ${hours} ore, ${minutes} minute, ${seconds} secunde`;
+      countdownElement.textContent = `Până pe 16 aprilie au rămas: ${days} zile (${remainingWeekdays} zile lucrătoare și ${remainingWeekends} zile de weekend), ${hours} ore, ${minutes} minute, ${seconds} secunde`;
     }
 
     // Update the countdown every second
