@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    .countdown {
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown" id="countdown"></div>
+  
+  <script>
+    // Target date and time (year, month (0-indexed), day, hour, minute, second)
+    const targetDate = new Date('2024-04-16T23:59:59').getTime();
+
+    function updateCountdown() {
+      let now = new Date().getTime();
+      let distance = targetDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      let countdownElement = document.getElementById('countdown');
+      countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    }
+
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+
+    // Update the countdown immediately after the page loads
+    window.onload = function() {
+      updateCountdown();
+    };
+  </script>
+</body>
+</html>
