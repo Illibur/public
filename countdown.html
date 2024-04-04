@@ -16,7 +16,7 @@
   
   <script>
     // Target date and time (year, month (0-indexed), day, hour, minute, second)
-    const targetDate = new Date('2024-04-16T23:59:59').getTime();
+    const targetDate = new Date('2024-04-16T00:00:00').getTime();
 
     function updateCountdown() {
       let now = new Date().getTime();
@@ -30,7 +30,7 @@
 
       // Display the countdown
       let countdownElement = document.getElementById('countdown');
-      countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+      countdownElement.textContent = `Time remains until 2024-04-16: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
     }
 
     // Update the countdown every second
