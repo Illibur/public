@@ -19,8 +19,8 @@
     const targetDate = new Date('2024-04-16T00:00:00').getTime();
 
     function updateCountdown() {
-      let now = new Date().getTime();
-      let distance = targetDate - now;
+      const currentDate = new Date();
+      let remainingTime = targetDate - currentDate;
 
       // Initialize variables to count weekdays and weekend days
       let remainingWeekdays = 0;
@@ -36,11 +36,11 @@
         }
       }
 
-      let days = remainingWeekends + remainingWeekdays;
+      const days = remainingWeekends + remainingWeekdays;
       
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      let hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
       // Display the countdown
       let countdownElement = document.getElementById('countdown');
